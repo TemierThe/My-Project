@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="/static/style.css"/>
+    </head>
+
+    <body>
+        <div class="container-login100">
+            <div class="wrap-login100 p-t-90 p-b-30">
+
+
+                <form class="login100-form validate-form" method="POST">
+                    <span class="login100-form-title p-b-40">
+                        Регистрация нового пользователя
+                    </span>
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Пожалуйста введите email: captain@gmail.com">
+                        <input class="input100" type="email" id="email" name="email" placeholder="e-mail">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Пожалуйста введите имя">
+                        <input class="input100" type="text" id="firstName" name="firstName" placeholder="Введите имя">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Пожалуйста введите пароль">
+                        <input class="input100" type="password" id="password1" name="password1" placeholder="Введите пароль">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Пожалуйста введите пароль">
+                        <input class="input100" type="password" id="password2" name="password2" placeholder="Подтвердите пароль">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Войти:
+                        </button>
+                    </div>
+
+                    <div class="flex-col-c p-t-224">
+                        <span class="txt2 p-b-10">
+                            У Вас уже есть аккаунт ?
+                        </span>
+
+                        <a href="/login" class="txt3 bo1 hov1">
+                            Войти!
+                        </a>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </body>
+</html>
+
+
+{% endblock %}

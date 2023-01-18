@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+            <link
+                rel="stylesheet"
+                href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+                integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+                crossorigin="anonymous"/>
+            <link
+                rel="stylesheet"
+                href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+                crossorigin="anonymous"/>
+
+
+                <link rel='stylesheet' href={{ url_for('static', filename='css/settings.css') }} />
+                <link rel='stylesheet' href={{ url_for('static', filename='css/animsition.css') }} />
+                <link rel='stylesheet' href={{ url_for('static', filename='css/font-awesome.css') }} />
+                <link rel='stylesheet' href={{ url_for('static', filename='css/style.css') }} />
+                <link rel='stylesheet' href={{ url_for('static', filename='css/media.css') }} />
+                <link rel='stylesheet' href={{ url_for('static', filename='css/composer.min.css') }} />
+                <link rel='stylesheet' href={{ url_for('static', filename='css/custom_script.css') }} />
+
+        <title>{% block title %}Home{% endblock %}</title>
+    </head>
+
+    <body>
+
+            <div id="header" class="wrapper-special">
+
+                                    <!-- гиперссылки -->
+                    <div id="header2" class="header-wrapper-special">
+                        <div class="menu-wrapper">
+                            <div class="main-menu">
+                                <div class="menu-main-nav-menu-container">
+                                    <ul id="menu-main-nav-menu" class="sf-menu">
+                                        {% if user.is_authenticated %}
+                                        <li class="menu-item menu-item-has-children"><a id="home" href="/">Home</a></li>
+                                        <li class="menu-item"><a id="logout" href="/logout">Logout</a></li>
+                                        {% else %}
+                                        <li class="menu-item"><a id="login" href="/login">Login</a></li>
+                                        <li class="menu-item"><a id="signUp" href="/sign-up">Sign Up</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="menu-icons-inside">
+                                <div class="menu-icon menu-icon-mobile"><span class="menu-icon-create"></span></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+
+                    <div class="header-extra"></div>
+                </div>
+
+
+
+                            <!-- гиперссылки for mobile device-->
+                <div class="mobile-menu-wrapper">
+                    <div class="menu-main-nav-menu-container">
+                        <ul id="menu-main-nav-menu-1" class="mobile-menu">
+                            {% if user.is_authenticated %}
+                            <li class="menu-item menu-item-has-children"><a id="home" href="/">Home</a></li>
+                            <li class="menu-item"><a id="logout" href="/logout">Logout</a></li>
+                            {% else %}
+                            <li class="menu-item"><a id="login" href="/login">Login</a></li>
+                            <li class="menu-item"><a id="signUp" href="/sign-up">Sign Up</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- блок с основным контентом, код которого находится в home.html -->
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+  
+        <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    </body>
+</html>
